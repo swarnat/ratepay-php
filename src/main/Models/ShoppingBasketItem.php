@@ -6,7 +6,7 @@ use RatePay\Utils\XmlUtils;
 
 class ShoppingBasketItem {
 
-  protected $_description;
+  protected $_name;
   protected $_articleNumber;
   protected $_uniqueArticleNumber;
   protected $_quantity;
@@ -14,8 +14,8 @@ class ShoppingBasketItem {
   protected $_taxRate; // as decimal, eg: 19
   protected $_category;
 
-  public function setDescription($arg) {
-    $this->_description = $arg;
+  public function setName($arg) {
+    $this->_name = $arg;
   }
 
   public function setArticleNumber($arg) {
@@ -43,7 +43,7 @@ class ShoppingBasketItem {
   }
 
   public function asElement() {
-    $element = new \SimpleXMLElement('<item>'. XmlUtils::xml_escape($this->_description) .'</item>');
+    $element = new \SimpleXMLElement('<item>'. XmlUtils::xml_escape($this->_name) .'</item>');
     $element->addAttribute('article-number', $this->_articleNumber);
     $element->addAttribute('unique-article-number', $this->_uniqueArticleNumber);
     $element->addAttribute('quantity', $this->_quantity);
