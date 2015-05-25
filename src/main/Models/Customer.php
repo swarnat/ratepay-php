@@ -123,7 +123,7 @@ class Customer {
     $this->_nationality = $arg;
   }
 
-  public function setCustomerAllowedCreditInquiry($arg) {
+  public function setCustomerAllowCreditInquiry($arg) {
     $this->_customerAllowCreditInquiry = $arg;
   }
 
@@ -198,7 +198,7 @@ class Customer {
     if (isset($this->_nationality)) {
       $element->addChild('nationality', $this->_nationality);
     }
-    $element->addChild('customer-allowed-credit-inquiry', $this->_customerAllowCreditInquiry ? 'yes' : 'no');
+    $element->addChild('customer-allow-credit-inquiry', $this->_customerAllowCreditInquiry ? 'yes' : 'no');
     if (isset($this->_vatId)) {
       $element->addChild('vat-id', $this->_vatId);
     }
