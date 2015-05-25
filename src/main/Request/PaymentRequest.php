@@ -40,12 +40,12 @@ class PaymentRequest extends BaseWithExtras {
     $this->_customer = $arg;
   }
 
-  public function setPayment(Payment $arg) {
-    $this->_payment = $arg;
-  }
-
   public function setShoppingBasket(ShoppingBasket $arg) {
     $this->_shoppingBasket = $arg;
+  }
+
+  public function setPayment(Payment $arg) {
+    $this->_payment = $arg;
   }
 
 }

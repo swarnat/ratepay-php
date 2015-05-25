@@ -15,7 +15,7 @@ abstract class Base {
 
   protected $_transactioinId;
   protected $_responseType;
-  protected $_timestamp;
+  protected $_timestamp; // datetime, as 2010-06-25T12:27:39.234
   protected $_status;
   protected $_statusDescription;
   protected $_result;
