@@ -20,7 +20,7 @@ class Payment {
   }
 
   public function setMethod($arg) {
-    if (inArray($arg, $this->_availableMethods)) {
+    if (in_array($arg, $this->_availableMethods)) {
       $this->_method = $arg;
     }
   }

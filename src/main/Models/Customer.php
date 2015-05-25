@@ -64,7 +64,7 @@ class Customer {
   }
 
   public function setGender($arg) {
-    if (inArray($arg, array(self::MALE, self::FEMALE, self::UNKNOWN))) {
+    if (in_array($arg, array(self::MALE, self::FEMALE, self::UNKNOWN))) {
       $this->_gender = $arg;
     }
   }
