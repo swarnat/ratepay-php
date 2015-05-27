@@ -44,12 +44,18 @@ class ShoppingBasketItem {
 
   public function asElement() {
     $element = new \SimpleXMLElement('<item>'. XmlUtils::xml_escape($this->_name) .'</item>');
-    $element->addAttribute('article-number', $this->_articleNumber);
-    $element->addAttribute('unique-article-number', $this->_uniqueArticleNumber);
+    if (isset($this->_articleNumber)) {
+      $element->addAttribute('article-number', $this->_articleNumber);
+    }
+    if (isset($this->_uniqueArticleNumber)) {
+      $element->addAttribute('unique-article-number', $this->_uniqueArticleNumber);
+    }
     $element->addAttribute('quantity', $this->_quantity);
     $element->addAttribute('unit-price-gross', $this->_unitPriceGross);
     $element->addAttribute('tax-rate', $this->_taxRate);
-    $element->addAttribute('category', $this->_category);
+    if (isset($this->_category)) {
+      $element->addAttribute('category', $this->_category);
+    }
 
     return $element;
   }
