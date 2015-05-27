@@ -22,7 +22,7 @@ class ShoppingBasket {
     $this->_currency = $arg;
   }
 
-  public function addItem(ShoppingBasketItem $item) {
+  public function addItem(ShoppingBasketItem $arg) {
     $this->_items[] = $arg;
   }
 
