@@ -13,7 +13,8 @@ abstract class Base {
   protected $_rawXml;
   protected $_root;
 
-  protected $_transactioinId;
+  protected $_transactionId;
+  protected $_transactionShortId;
   protected $_responseType;
   protected $_timestamp; // datetime, as 2010-06-25T12:27:39.234
   protected $_status;
@@ -32,6 +33,7 @@ abstract class Base {
 
   public function parseResponse() {
     $this->_transactionId = $this->_root->head->{'transaction-id'};
+    $this->_transactionShortId = $this->_root->head->{'transaction-short-id'};
     $this->_responseType = $this->_root->head->{'response-type'};
     $this->_timestamp = $this->_root->head->processing->timestamp;
     $this->_status = $this->_root->head->processing->status['code'];
@@ -63,6 +65,10 @@ abstract class Base {
 
   public function getTransactionId() {
     return $this->_transactionId;
+  }
+
+  public function getTransactionShortId() {
+    return $this->_transactionShortId;
   }
 
   public function getResponseType() {
