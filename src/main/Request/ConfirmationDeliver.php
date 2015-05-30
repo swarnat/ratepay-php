@@ -25,7 +25,9 @@ class ConfirmationDeliver extends BaseWithExtras {
     XmlUtils::sxml_append($result, $head->asElement());
 
     $content = new Internals\Content();
-    $content->setInvoicing($this->_invoicing);
+    if (isset($this->_invoicing)) {
+      $content->setInvoicing($this->_invoicing);
+    }
     $content->setShoppingBasket($this->_shoppingBasket);
     XmlUtils::sxml_append($result, $content->asElement());
 
