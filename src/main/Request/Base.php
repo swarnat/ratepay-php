@@ -24,11 +24,15 @@ abstract class Base {
     $head = new Internals\Head();
     $head->setSystemId($this->_systemId);
     $head->setOperation($this->getOperation());
+    $head->setOperationSubtype($this->getOperationSubtype());
     $head->setCredential(new Internals\Credential($this->_profileId, $this->_securityCode));
 
     return $head;
   }
 
+  protected function getOperationSubtype() {
+    return null;
+  }
 
   abstract protected function getOperation();
 

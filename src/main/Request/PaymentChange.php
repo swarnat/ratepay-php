@@ -4,7 +4,7 @@ namespace RatePay\Request;
 
 use RatePay\Utils\XmlUtils;
 
-class PaymentChange extends BaseWithExtras {
+abstract class PaymentChange extends BaseWithExtras {
 
   protected function getOperation() {
     return 'PAYMENT_CHANGE';

@@ -9,6 +9,7 @@ class Head {
   protected $_systemId;
   protected $_transactionId;
   protected $_operation;
+  protected $_operationSubtype;
   protected $_credential;
   protected $_customerDevice;
   protected $_external;
@@ -24,6 +25,10 @@ class Head {
 
   public function setOperation($arg) {
     $this->_operation = $arg;
+  }
+
+  public function setOperationSubtype($arg) {
+    $this->_operationSubtype = $arg;
   }
 
   public function setCredential(Credential $arg) {
@@ -48,7 +53,10 @@ class Head {
     if (isset($this->_transactionId)) {
       $element->addChild('transaction-id', $this->_transactionId);
     }
-    $element->addChild('operation', $this->_operation);
+    $operation = $element->addChild('operation', $this->_operation);
+    if (isset($this->_operationSubtype)) {
+      $operation->addAttribute('subtype', $this->_operationSubtype);
+    }
     XmlUtils::sxml_append($element, $this->_credential->asElement());
     if (isset($this->_customerDevice)) {
       XmlUtils::sxml_append($element, $this->_customerDevice->asElement());
