@@ -87,7 +87,7 @@ class Address {
     }
     $element->addChild('zip-code', $this->_zipCode);
     $element->addChild('city', $this->_city);
-    $element->addChild('country-code', $this->_city);
+    $element->addChild('country-code', $this->_countryCode);
 
     return $element;
   }
