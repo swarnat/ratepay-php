@@ -19,11 +19,11 @@ class ShoppingBasketItem {
   }
 
   public function setArticleNumber($arg) {
-    $this->_setArticleNumber = $arg;
+    $this->_articleNumber = $arg;
   }
 
   public function setUniqueArticleNumber($arg) {
-    $this->_setUniqueArticleNumber = $arg;
+    $this->_uniqueArticleNumber = $arg;
   }
 
   public function setQuantity($arg) {
