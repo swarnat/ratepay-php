@@ -7,7 +7,6 @@ use RatePay\Utils\XmlUtils;
 abstract class BaseWithExtras extends Base {
 
   protected $_transactionId;
-  protected $_deviceSite;
   protected $_deviceToken;
   protected $_orderId;
   protected $_merchantConsumerId;
@@ -18,10 +17,6 @@ abstract class BaseWithExtras extends Base {
 
   public function setTransactionId($arg) {
     $this->_transactionId = $arg;
-  }
-
-  public function setDeviceSite($arg) {
-    $this->_deviceSite = $arg;
   }
 
   public function setDeviceToken($arg) {
@@ -55,8 +50,8 @@ abstract class BaseWithExtras extends Base {
   protected function getBasicHead() {
     $head = parent::getBasicHead();
     $head->setTransactionId($this->_transactionId);
-    if (isset($this->_deviceSite) && isset($this->_deviceToken)) {
-      $head->setCustomerDevice(new Internals\CustomerDevice($this->_deviceSite, $this->_deviceToken));
+    if (isset($this->_deviceToken)) {
+      $head->setCustomerDevice(new Internals\CustomerDevice($this->_deviceToken));
     }
     $external = new Internals\External();
     $external->setOrderId($this->_orderId);
