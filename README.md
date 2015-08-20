@@ -1,7 +1,7 @@
 RatePAY PHP
 -----------
 
-An API client for the RatePAY REST API. Supports the RatePAY REST API version 1.7.1.
+An API client for the RatePAY REST API. Supports the RatePAY REST API version 1.7.5.
 
 
 
