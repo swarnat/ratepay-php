@@ -23,6 +23,7 @@ abstract class Base {
   protected $_resultDescription;
   protected $_reason;
   protected $_reasonDescription;
+  protected $_customerMessage;
 
   public function __construct(Array $info, $rawXml) {
     $this->_info = $info;
@@ -42,6 +43,7 @@ abstract class Base {
     $this->_resultDescription = $this->_root->head->processing->result;
     $this->_reason = $this->_root->head->processing->reason['code'];
     $this->_reasonDescription = $this->_root->head->processing->reason;
+    $this->_customerMessage = $this->_root->head->processing->{'customer-message'};
 
     $extra = array(
       'status' => $this->_status,
@@ -49,15 +51,16 @@ abstract class Base {
       'result' => $this->_result,
       'resultDescription' => $this->_resultDescription,
       'reason' => $this->_reason,
-      'reasonDescription' => $this->_reasonDescription
+      'reasonDescription' => $this->_reasonDescription,
+      'customerMessage' => $this->_customerMessage
     );
 
     if ($this->_result == "150") {
       throw new TechnicalError($this->_reasonDescription, $this->_reason, null, $extra);
-    } else if ($this->_result == "405") {
-      throw new WarningError($this->_reasonDescription, $this->_reason, null, $extra);
     } else if ($this->_result == "401") {
       throw new RejectionError($this->_reasonDescription, $this->_reason, null, $extra);
+    } else if ($this->_result == "405") {
+      throw new WarningError($this->_reasonDescription, $this->_reason, null, $extra);
     } else if ($this->_responseType == 'STATUS_ERROR' || in_array($this->_status, array('ERROR', 'FATAL'))) {
       throw new GenericError($this->_reasonDescription, $this->_reason, null, $extra);
     }
