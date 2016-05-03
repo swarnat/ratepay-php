@@ -34,6 +34,8 @@ class Customer {
   protected $_customerAllowCreditInquiry;
   protected $_vatId;
   protected $_companyId;
+  protected $_registryLocation;
+  protected $_homepage;
 
   public function setFirstName($arg) {
     $this->_firstName = $arg;
@@ -134,6 +136,12 @@ class Customer {
   public function setCompanyId($arg) {
     $this->_companyId = $arg;
   }
+  public function setRegistryLocation($arg) {
+    $this->_registryLocation = $arg;
+  }
+  public function setHomepage($arg) {
+    $this->_homepage = $arg;
+  }
 
   public function asElement() {
     $element = new \SimpleXMLElement('<customer/>');
@@ -204,6 +212,12 @@ class Customer {
     }
     if (isset($this->_companyId)) {
       $element->addChild('company-id', $this->_companyId);
+    }
+    if (isset($this->_registryLocation)) {
+      $element->addChild('registry-location', $this->_registryLocation);
+    }
+    if (isset($this->_homepage)) {
+      $element->addChild('homepage', $this->_homepage);
     }
 
     return $element;

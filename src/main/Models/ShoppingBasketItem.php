@@ -13,7 +13,9 @@ class ShoppingBasketItem {
   protected $_unitPriceGross;
   protected $_taxRate; // as decimal, eg: 19
   protected $_category;
-
+  protected $_descriptionAddition;
+  protected $_tagName = 'item';
+  
   public function setName($arg) {
     $this->_name = $arg;
   }
@@ -42,8 +44,12 @@ class ShoppingBasketItem {
     $this->_category = $arg;
   }
 
+  public function setDescriptionAddition($arg) {
+    $this->_descriptionAddition = $arg;
+  }
+  
   public function asElement() {
-    $element = new \SimpleXMLElement('<item>'. XmlUtils::xml_escape($this->_name) .'</item>');
+    $element = new \SimpleXMLElement('<'.$this->_tagName.'>'. XmlUtils::xml_escape($this->_name) .'</'.$this->_tagName.'>');
     if (isset($this->_articleNumber)) {
       $element->addAttribute('article-number', $this->_articleNumber);
     }
@@ -55,6 +61,9 @@ class ShoppingBasketItem {
     $element->addAttribute('tax-rate', $this->_taxRate);
     if (isset($this->_category)) {
       $element->addAttribute('category', $this->_category);
+    }
+    if (isset($this->_descriptionAddition)) {
+      $element->addAttribute('description-addition', $this->_descriptionAddition);
     }
 
     return $element;

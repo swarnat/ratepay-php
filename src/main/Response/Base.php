@@ -93,5 +93,9 @@ abstract class Base {
   public function getResult() {
     return $this->_result;
   }
+  
+	public function getCustomerMessage() {
+		return $this->_customerMessage;
+	}	
 
 }
